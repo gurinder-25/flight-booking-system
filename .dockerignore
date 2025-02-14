@@ -1,5 +1,4 @@
-# Ignore target folder (contains compiled files)
-target/
+
 
 # Ignore OS & editor-specific files
 *.log
