@@ -7,7 +7,7 @@ services:
     restart: always
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: password
+      POSTGRES_PASSWORD: abc@123
       POSTGRES_DB: flightapi1
     ports:
       - "5432:5432"
