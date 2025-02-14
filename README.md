@@ -80,6 +80,19 @@ This is a simple Flight Booking API that allows users to register, login, book f
 
 ---
 
+---
+
+## Important Note on Booking Flights
+Before booking a flight, **you must first login** using the `/api/auth/login` endpoint. If you try to book a flight without logging in, the API will return the following response:
+```json
+{
+  "message": "You must first Log in!"
+}
+```
+Ensure you authenticate before making a flight booking request.
+
+---
+
 ### **2. Flight Management Routes**
 
 #### **Add a Flight**
