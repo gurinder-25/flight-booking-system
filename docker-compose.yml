@@ -1,31 +1,30 @@
 version: '3.8'
 
 services:
-  postgres:
-    image: postgres:15
-    container_name: flightapi1
-    restart: always
-    environment:
-      POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: abc@123
-      POSTGRES_DB: flightapi1
-    ports:
-      - "5432:5432"
-    volumes:
-      - pgdata:/var/lib/postgresql/data
-
   app:
     build: .
     container_name: flight-app
-    restart: always
+    ports:
+      - "8080:8080"
     depends_on:
       - postgres
     environment:
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/flightapi1
+      SPRING_DATASOURCE_URL: jdbc:postgresql://host.docker.internal:5432/flightapi1
       SPRING_DATASOURCE_USERNAME: postgres
       SPRING_DATASOURCE_PASSWORD: abc@123
+
+  postgres:
+    image: postgres:15
+    container_name: postgres-db
+    restart: always
+    environment:
+      POSTGRES_DB: flightapi1
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: abc@123
     ports:
-      - "8080:8080"
+      - "5432:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
 
 volumes:
-  pgdata:
+  postgres-data:
