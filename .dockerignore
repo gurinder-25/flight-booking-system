@@ -1,0 +1,19 @@
+# Ignore target folder (contains compiled files)
+target/
+
+# Ignore OS & editor-specific files
+*.log
+*.swp
+*.swo
+.DS_Store
+
+# Ignore IDE files (IntelliJ, Eclipse, VS Code)
+.idea/
+*.iml
+*.vscode/
+.classpath
+.project
+.settings/
+
+# Ignore environment files (if using)
+.env
